@@ -17,8 +17,11 @@ alias svi="sudo vim"
 alias whatismyip="echo \`curl -s www.levityisland.com/whatismyip.php\`"
 alias debug_smtpd="sudo /usr/lib/python2.5/smtpd.py -n -c DebuggingServer localhost:25"
 alias my2csv="sed 's/\\t/\",\"/g;s/^/\"/;s/\$/\"/;s/\\n//g'"
-# my2csv doesn't work on osx because sed only handles a literal tab (i.e. C-v, <Tab>)... q(-_-)p
 alias biggest="find . -type f -print0|xargs -0 du -k|sort -n|tail"
+
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
 
 function makeprompt {
     local black_green="\[\033[30m\]\[\033[42m\]"
@@ -34,10 +37,9 @@ function makeprompt {
     local red="\[\033[31m\]"
     local blackbold="\[\033[1;32m\]"
     local green="\[\033[32m\]"
-
     local normal="\[\033[0m\]"
 
-    PS1="$red_black\t $green\u@\h$normal \w \$ "
+    PS1="$red_black\t$normal \w\$(parse_git_branch) $normal\$ "
 }
 
 makeprompt 
