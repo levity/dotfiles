@@ -1,23 +1,30 @@
-export PATH=/opt/local/lib/mysql5/bin:/Library/Frameworks/Python.framework/Versions/Current/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
+# render color codes correctly
 export LESS=-R
 
 shopt -s histverify
 shopt -s histappend
 export PROMPT_COMMAND='history -a'
+
+# remove trivial stuff from history
 export HISTIGNORE="&:ls:[bf]g:exit"
 
-export MANPATH=/opt/local/share/man:$MANPATH
-export PYTHONPATH=$PYTHONPATH:/Users/lawrence/Code
+# use textmate as default editor
 export EDITOR="mate -w"
 
 alias c="bc -ql"
+alias s="sudo"
 alias li="ssh levityisland.com"
-alias svi="sudo vim"
+
+alias e1="ssh e1.skillslate.com"
+alias e2="ssh e2.skillslate.com"
+alias sk="cd ~/Code/1/skillslate"
+alias skc="heroku console --app skillslate"
+alias skcs="heroku console --app skillslate-staging"
+
+# simple echo mail server
+alias debug_smtpd="sudo /usr/lib/python2.5/smtpd.py -n -c DebuggingServer localhost:25"
 
 alias whatismyip="echo \`curl -s www.levityisland.com/whatismyip.php\`"
-alias debug_smtpd="sudo /usr/lib/python2.5/smtpd.py -n -c DebuggingServer localhost:25"
-alias my2csv="sed 's/\\t/\",\"/g;s/^/\"/;s/\$/\"/;s/\\n//g'"
-# my2csv doesn't work on osx because sed only handles a literal tab (i.e. C-v, <Tab>)... q(-_-)p
 alias biggest="find . -type f -print0|xargs -0 du -k|sort -n|tail"
 
 function makeprompt {
@@ -42,6 +49,9 @@ function makeprompt {
 
 makeprompt 
 
-alias e1="ssh e1.skillslate.com"
-alias e2="ssh e2.skillslate.com"
-alias sk="cd ~/Code/1/skillslate"
+function tmuxcolors {
+	for i in {0..255} ; do
+		printf "\x1b[38;5;${i}mcolour${i}\n"
+	done
+}
+
