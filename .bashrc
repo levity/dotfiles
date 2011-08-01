@@ -1,3 +1,5 @@
+[[ -s "/Users/lawrence/.rvm/scripts/rvm" ]] && source "/Users/lawrence/.rvm/scripts/rvm"
+
 # render color codes correctly
 export LESS=-R
 
