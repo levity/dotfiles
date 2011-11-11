@@ -1,0 +1,14 @@
+[user]
+  name = Lawrence Wang
+  email = levity@gmail.com
+
+[color]
+  ui = true
+  diff = auto
+  status = auto
+  branch = auto
+
+[alias]
+  st = status
+  ci = commit
+  co = checkout
