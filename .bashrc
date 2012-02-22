@@ -16,6 +16,7 @@ export EDITOR="mate -w"
 alias c="bc -ql"
 alias s="sudo"
 alias li="ssh levityisland.com"
+alias bx="bundle exec"
 
 # simple echo mail server
 alias debug_smtpd="sudo /usr/lib/python2.5/smtpd.py -n -c DebuggingServer localhost:25"
@@ -54,3 +55,5 @@ function tmuxcolors {
   done
 }
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
