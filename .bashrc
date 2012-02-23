@@ -17,6 +17,7 @@ alias c="bc -ql"
 alias s="sudo"
 alias li="ssh levityisland.com"
 alias bx="bundle exec"
+alias rr="unset rvm_current_rvmrc; cd ."
 
 # simple echo mail server
 alias debug_smtpd="sudo /usr/lib/python2.5/smtpd.py -n -c DebuggingServer localhost:25"
@@ -24,8 +25,14 @@ alias debug_smtpd="sudo /usr/lib/python2.5/smtpd.py -n -c DebuggingServer localh
 alias whatismyip="echo \`curl -s www.levityisland.com/whatismyip.php\`"
 alias biggest="find . -type f -print0|xargs -0 du -k|sort -n|tail"
 
-parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+function working_copy_info() {
+  branch=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+  ruby=`rvm current 2> /dev/null | sed -e 's/system//'`
+  if [ -n "$branch" -a -n "$ruby" ]; then
+    echo " ($branch, $ruby)"
+  elif [ -n "$branch" ]; then
+    echo " ($branch)"
+  fi
 }
 
 function makeprompt {
@@ -44,7 +51,7 @@ function makeprompt {
   local green="\[\033[32m\]"
   local normal="\[\033[0m\]"
 
-  PS1="$red_black\t$normal \w\$(parse_git_branch) $normal\$ "
+  PS1="$red_black\t$normal \w\$(working_copy_info) $normal\$ "
 }
 
 makeprompt 
@@ -55,5 +62,6 @@ function tmuxcolors {
   done
 }
 
+export PATH=$PATH:~/bin
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
