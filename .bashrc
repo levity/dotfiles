@@ -15,14 +15,14 @@ export EDITOR="mate -w"
 
 alias c="bc -ql"
 alias s="sudo"
-alias li="ssh levityisland.com"
+alias li="mosh levityisland.com"
 alias bx="bundle exec"
 alias rr="unset rvm_current_rvmrc; cd ."
 
 # simple echo mail server
 alias debug_smtpd="sudo /usr/lib/python2.5/smtpd.py -n -c DebuggingServer localhost:25"
 
-alias whatismyip="echo \`curl -s www.levityisland.com/whatismyip.php\`"
+alias whatismyip="echo \`curl -s levityisland.com/whatismyip.php\`"
 alias biggest="find . -type f -print0|xargs -0 du -k|sort -n|tail"
 
 function working_copy_info() {
@@ -62,6 +62,5 @@ function tmuxcolors {
   done
 }
 
-export PATH=$PATH:~/bin
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=~/bin:/usr/local/bin:$PATH:$HOME/.rvm/bin 
