@@ -58,7 +58,10 @@ makeprompt
 
 function tmuxcolors {
   for i in {0..255} ; do
-    printf "\x1b[38;5;${i}mcolour${i}\n"
+    printf "\x1b[38;5;${i}mcolour%-3d  " $i
+    if [ $((i % 8)) = 7 ]; then
+      printf "\n"
+    fi
   done
 }
 
