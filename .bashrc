@@ -10,14 +10,16 @@ export PROMPT_COMMAND='history -a'
 # remove trivial stuff from history
 export HISTIGNORE="&:ls:[bf]g:exit"
 
-# use textmate as default editor
-export EDITOR="mate -w"
+# use sublime text as default editor
+export EDITOR=subl
 
 alias c="bc -ql"
+alias cb="cd ~/Code/lumos/brainpower"
+alias cl="cd ~/Code/lumos/lumos_rails"
 alias s="sudo"
 alias li="mosh levityisland.com"
 alias bx="bundle exec"
-alias rr="unset rvm_current_rvmrc; cd ."
+alias rr="unset rvm_current_rvmrc; rvm rvmrc trust; rvm rvmrc load"
 
 # simple echo mail server
 alias debug_smtpd="sudo /usr/lib/python2.5/smtpd.py -n -c DebuggingServer localhost:25"
@@ -27,10 +29,10 @@ alias biggest="find . -type f -print0|xargs -0 du -k|sort -n|tail"
 
 function working_copy_info() {
   branch=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
-  ruby=`rvm current 2> /dev/null | sed -e 's/system//'`
-  if [ -n "$branch" -a -n "$ruby" ]; then
-    echo " ($branch, $ruby)"
-  elif [ -n "$branch" ]; then
+  #ruby=`rvm current 2> /dev/null | sed -E 's/(system|ruby-)//'`
+  #if [ -n "$branch" -a -n "$ruby" ]; then
+  #  echo " ($branch, $ruby)"
+  if [ -n "$branch" ]; then
     echo " ($branch)"
   fi
 }
@@ -66,4 +68,4 @@ function tmuxcolors {
 }
 
 
-PATH=~/bin:/usr/local/bin:$PATH:$HOME/.rvm/bin 
+export PATH=~/.rvm/bin:~/bin:/usr/local/bin:$PATH
