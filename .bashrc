@@ -11,7 +11,7 @@ export PROMPT_COMMAND='history -a'
 export HISTIGNORE="&:ls:[bf]g:exit"
 
 # use sublime text as default editor
-export EDITOR=subl
+export EDITOR="subl -w"
 
 alias c="bc -ql"
 alias cb="cd ~/Code/lumos/brainpower"
