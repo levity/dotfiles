@@ -17,7 +17,7 @@ alias c="bc -ql"
 alias cb="cd ~/Code/lumos/brainpower"
 alias cl="cd ~/Code/lumos/lumos_rails"
 alias s="sudo"
-alias li="mosh levityisland.com"
+alias li="mosh lw.io tmux a"
 alias bx="bundle exec"
 alias rr="unset rvm_current_rvmrc; rvm rvmrc trust; rvm rvmrc load"
 
@@ -57,6 +57,8 @@ function makeprompt {
 }
 
 makeprompt 
+
+source ~/.git-completion.sh
 
 function tmuxcolors {
   for i in {0..255} ; do
