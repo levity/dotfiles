@@ -70,4 +70,4 @@ function tmuxcolors {
 }
 
 
-export PATH=~/.rvm/bin:~/bin:/usr/local/bin:$PATH
+export PATH=~/.rvm/bin:/usr/local/bin:$PATH
