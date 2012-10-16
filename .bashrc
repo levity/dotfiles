@@ -17,7 +17,6 @@ alias c="bc -ql"
 alias cb="cd ~/Code/lumos/brainpower"
 alias cl="cd ~/Code/lumos/lumos_rails"
 alias s="sudo"
-alias li="mosh lw.io tmux a"
 alias bx="bundle exec"
 alias rr="unset rvm_current_rvmrc; rvm rvmrc trust; rvm rvmrc load"
 
@@ -26,6 +25,10 @@ alias debug_smtpd="sudo /usr/lib/python2.5/smtpd.py -n -c DebuggingServer localh
 
 alias whatismyip="echo \`curl -s levityisland.com/whatismyip.php\`"
 alias biggest="find . -type f -print0|xargs -0 du -k|sort -n|tail"
+
+function mox() {
+  mosh $1 tmux a
+}
 
 function working_copy_info() {
   branch=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
