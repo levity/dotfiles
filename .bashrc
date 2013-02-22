@@ -1,4 +1,4 @@
-[[ -s "/Users/lawrence/.rvm/scripts/rvm" ]] && source "/Users/lawrence/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # render color codes correctly
 export LESS=-R
@@ -14,11 +14,14 @@ export HISTIGNORE="&:ls:[bf]g:exit"
 export EDITOR="subl -w"
 
 alias c="bc -ql"
-alias cb="cd ~/Code/lumos/brainpower"
-alias cl="cd ~/Code/lumos/lumos_rails"
+alias ch="cd ~/Code/changemakrs"
 alias s="sudo"
 alias bx="bundle exec"
 alias rr="unset rvm_current_rvmrc; rvm rvmrc trust; rvm rvmrc load"
+
+alias hpc="heroku run console --remote pro"
+alias hpp="heroku ps --remote pro"
+alias hpg="heroku config --remote pro"
 
 # simple echo mail server
 alias debug_smtpd="sudo /usr/lib/python2.5/smtpd.py -n -c DebuggingServer localhost:25"
@@ -73,4 +76,5 @@ function tmuxcolors {
 }
 
 
-export PATH=~/.rvm/bin:/usr/local/bin:$PATH
+export PATH=~/.rvm/bin:~/bin:/usr/local/bin:$PATH
+export GNUTERM=x11 # for gnuplot
